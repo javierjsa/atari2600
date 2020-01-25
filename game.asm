@@ -398,14 +398,14 @@ JetColorTurn:
 
 BomberColor:
     .byte #$00
-    .byte #$32
-    .byte #$32
-    .byte #$0E
-    .byte #$40
-    .byte #$40
-    .byte #$40
-    .byte #$40
-    .byte #$40
+    .byte #$16
+    .byte #$16
+    .byte #$17
+    .byte #$1A
+    .byte #$1A
+    .byte #$1B
+    .byte #$1B
+    .byte #$1C
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Complete ROM size with exactly 4KB
