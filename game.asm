@@ -27,7 +27,7 @@ Random          byte         ; used to generate random bomber x-position
 ;; Define constants
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 JET_HEIGHT = 9               ; player0 sprite height (# rows in lookup table)
-BOMBER_HEIGHT = 9            ; player1 sprite height (# rows in lookup table)
+BOMBER_HEIGHT = 11            ; player1 sprite height (# rows in lookup table)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Start our ROM code at memory address $F000
@@ -170,8 +170,8 @@ GameVisibleLine:
 .DrawSpriteP1:
     tay                      ; load Y so we can work with the pointer
 
-    lda #%00000101
-    sta NUSIZ1               ; stretch player 1 sprite
+    ;lda #%00000101
+    ;sta NUSIZ1               ; stretch player 1 sprite
 
     lda (BomberSpritePtr),Y  ; load player1 bitmap data from lookup table
     sta WSYNC                ; wait for scanline
@@ -365,15 +365,17 @@ JetSpriteTurn:
 
 BomberSprite:
     .byte #%00000000         ;
-    .byte #%00001000         ;    #
-    .byte #%00001000         ;    #
-    .byte #%00101010         ;  # # #
-    .byte #%00111110         ;  #####
-    .byte #%01111111         ; #######
-    .byte #%00101010         ;  # # #
-    .byte #%00001000         ;    #
-    .byte #%00011100         ;   ###
-
+    .byte #%00011000         ;    ##
+    .byte #%00011000         ;    ##
+    .byte #%00011000         ;    ##
+    .byte #%00111000         ;    ##
+    .byte #%11111100         ; ######
+    .byte #%10011110         ; #  ####
+    .byte #%10011011         ; #  ## ##
+    .byte #%00011001         ;    ##  #
+    .byte #%00011001         ;    ##  #
+    .byte #%00010001         ;    #   #
+    
 JetColor:
     .byte #$00
     .byte #$FE
@@ -398,13 +400,15 @@ JetColorTurn:
 
 BomberColor:
     .byte #$00
-    .byte #$16
+    .byte #$14
     .byte #$16
     .byte #$17
     .byte #$1A
     .byte #$1A
     .byte #$1B
     .byte #$1B
+    .byte #$1C
+    .byte #$1C
     .byte #$1C
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
